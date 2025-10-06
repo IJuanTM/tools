@@ -1,0 +1,74 @@
+@use "../config/abstracts/mixins" as *;
+
+section.hex {
+  div.hex-card {
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    border-radius: 1rem;
+    background-color: var(--bg-section);
+
+    @include shimmer(false);
+
+    div.input-row {
+      div.input-col {
+        cursor: pointer;
+        opacity: .5;
+        row-gap: .25rem;
+
+        @include hover-focus {
+          opacity: 1;
+        }
+
+        input {
+          width: 3rem;
+        }
+
+        &.active {
+          opacity: 1;
+        }
+
+        > div.row {
+          pointer-events: none;
+        }
+
+        &:nth-child(1) label {
+          color: red;
+        }
+
+        &:nth-child(2) label {
+          color: green;
+        }
+
+        &:nth-child(3) label {
+          color: blue;
+        }
+      }
+
+      div.selected-color {
+        font-size: 1.5rem;
+      }
+    }
+
+    div.hex-grid {
+      row-gap: .25rem;
+
+      > div.row {
+        column-gap: .25rem;
+
+        > div.col {
+          font-family: "IBM Plex Mono", monospace;
+          padding: .25rem;
+          cursor: pointer;
+          user-select: none;
+          border: .125rem solid transparent;
+          border-radius: .25rem;
+
+          //@include hover-focus {
+          //  border-color: var(--border-50);
+          //  background-color: var(--bg-accent);
+          //}
+        }
+      }
+    }
+  }
+}
