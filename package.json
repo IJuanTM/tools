@@ -1,6 +1,6 @@
 {
   "name": "tools",
-  "description": "",
+  "description": "A website with a bunch of handy web related tools.",
   "version": "1.0.0",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.1.0",
