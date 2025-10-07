@@ -5,9 +5,7 @@ section.hex {
     padding: 1.5rem 2rem;
     text-decoration: none;
     border-radius: 1rem;
-    background-color: var(--bg-section);
-
-    @include shimmer(false);
+    background-color: var(--bg-content);
 
     div.input-row {
       div.input-col {

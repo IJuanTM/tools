@@ -142,9 +142,18 @@ export class Hex {
   }
 
   private setColor(): void {
-    this.content.style.backgroundColor = this.getHex();
+    const hex = this.getHex();
+    this.content.style.backgroundColor = hex;
 
-    this.selectedColor.innerHTML = this.getHex();
+    const contrastColor = this.checkContrast(this.currentColor.r, this.currentColor.g, this.currentColor.b);
+
+    const r = parseInt(contrastColor.slice(1, 3), 16);
+    const g = parseInt(contrastColor.slice(3, 5), 16);
+    const b = parseInt(contrastColor.slice(5, 7), 16);
+
+    this.content.style.backgroundImage = `radial-gradient(rgba(${r}, ${g}, ${b}, .05) .0625rem, transparent 0)`;
+
+    this.selectedColor.innerHTML = hex;
   }
 
   private updateGrid(): void {
@@ -165,7 +174,26 @@ export class Hex {
     });
   }
 
-  private checkContrast = (r: string, g: string, b: string) => (parseInt(r, 16) * 299 + parseInt(g, 16) * 587 + parseInt(b, 16) * 114) / 1000 > 125 ? '#000' : '#FFF';
+  private checkContrast = (r: string, g: string, b: string) => {
+    const [R, G, B] = [r, g, b].map(c => parseInt(c, 16));
+
+    const L =
+      .2126 * (R! / 255 <= .03928 ? R! / 255 / 12.92 : Math.pow((R! / 255 + .055) / 1.055, 2.4)) +
+      .7152 * (G! / 255 <= .03928 ? G! / 255 / 12.92 : Math.pow((G! / 255 + .055) / 1.055, 2.4)) +
+      .0722 * (B! / 255 <= .03928 ? B! / 255 / 12.92 : Math.pow((B! / 255 + .055) / 1.055, 2.4));
+
+    const target = 4.5;
+
+    let Lt = L > .5 ? (L + .05) / target - .05 : (L + .05) * target - .05;
+    Lt = Math.min(Math.max(Lt, 0), 1);
+
+    let gray = Math.round((Lt <= .0031308 ? Lt * 12.92 : 1.055 * Math.pow(Lt, 1 / 2.4) - .055) * 255);
+    gray = L > .5 ? Math.min(gray, 50) : Math.max(gray, 205);
+
+    const hex = gray.toString(16).padStart(2, '0');
+    return `#${hex}${hex}${hex}`;
+  };
+
 
   // private updateSavedColors(): void {
   //   this.savedColorsDiv.innerHTML = '';

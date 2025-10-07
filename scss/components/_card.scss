@@ -2,12 +2,12 @@
 @use "../config/vars/colors" as *;
 
 a.card {
-  text-align: start !important;
   position: relative;
   overflow: hidden;
   max-width: 32rem !important;
   padding: 2rem;
   transition: background-color .15s ease-in-out;
+  text-align: start !important;
   text-decoration: none;
   border-radius: 1rem;
   background-color: var(--bg-section);
