@@ -13,4 +13,8 @@ main.content {
     min-height: calc($content-height + 2rem);
     padding: calc($content-padding-row - 1rem) calc($content-padding-col - 2rem);
   }
+
+  @include breakpoint-down(sm) {
+    padding: calc($content-padding-row - 2rem) calc($content-padding-col - 3rem);
+  }
 }

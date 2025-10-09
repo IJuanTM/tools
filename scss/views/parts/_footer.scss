@@ -14,7 +14,7 @@ footer {
 
     @include breakpoint-down(md) {
       height: calc($footer-height - 1rem);
-      padding: 1rem;
+      padding: 0 1rem;
     }
 
     a {

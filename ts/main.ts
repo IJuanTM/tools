@@ -1,11 +1,11 @@
 import {menuHamburger, navMenu, setActiveLink, setNavItems, toggleMenu} from './menu.ts';
 import {acceptCookies, cookie} from './cookie.ts'
-import {Hex} from './Class/hex.ts';
+import {Hex} from './Class/Hex.ts';
 
 // Import external stylesheets for Vite to bundle them, local stylesheets are handled by sass
-import "the-new-css-reset/css/reset.css";
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import "hamburgers/dist/hamburgers.min.css";
+import 'the-new-css-reset/css/reset.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
+import 'hamburgers/dist/hamburgers.min.css';
 
 // -------------------------------------------------------------------------------------------------------------------------------- //
 

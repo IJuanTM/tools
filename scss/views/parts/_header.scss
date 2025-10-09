@@ -16,7 +16,7 @@ header {
 
     @include breakpoint-down(md) {
       height: calc($header-height - 1rem);
-      padding: 1rem;
+      padding: unset;
     }
 
     > div.nav-brand {

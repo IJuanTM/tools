@@ -91,24 +91,24 @@ export class Hex {
   private async copyToClipboard(text: string): Promise<void> {
     try {
       await navigator.clipboard.writeText(text);
-      console.log("Copied:", text);
+      console.log('Copied:', text);
     } catch (err) {
-      console.error("Failed to copy:", err);
+      console.error('Failed to copy:', err);
     }
   }
 
   private async copyFallback(text: string): Promise<void> {
-    const textarea = document.createElement("textarea");
+    const textarea = document.createElement('textarea');
     textarea.value = text;
-    textarea.style.position = "fixed";
-    textarea.style.opacity = "0";
+    textarea.style.position = 'fixed';
+    textarea.style.opacity = '0';
 
     document.body.appendChild(textarea);
 
     textarea.focus();
     textarea.select();
 
-    document.execCommand("copy");
+    document.execCommand('copy');
 
     document.body.removeChild(textarea);
   }
@@ -152,6 +152,12 @@ export class Hex {
     const b = parseInt(contrastColor.slice(5, 7), 16);
 
     this.content.style.backgroundImage = `radial-gradient(rgba(${r}, ${g}, ${b}, .05) .0625rem, transparent 0)`;
+
+    this.gridItems.forEach((item) => {
+      item.addEventListener('mouseenter', () => item.style.boxShadow = `inset 0 0 0 .125rem rgba(${r}, ${g}, ${b}, .5)`);
+
+      item.addEventListener('mouseleave', () => item.style.boxShadow = '');
+    });
 
     this.selectedColor.innerHTML = hex;
   }
