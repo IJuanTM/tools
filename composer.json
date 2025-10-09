@@ -1,7 +1,7 @@
 {
-  "name": "simpl/simpl",
-  "description": "An easy-to-use PHP, HTML, Sass and TypeScript framework!",
-  "version": "1.4.0",
+  "name": "tools/tools",
+  "description": "A website with a bunch of handy web related tools.",
+  "version": "1.0.0",
   "type": "project",
   "require": {
     "php": "^8.3",
